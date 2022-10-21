@@ -16,7 +16,7 @@ public class LoginTest extends LoginBaseTest {
   @Test
   public void login() throws Exception {
     loginBase();
-    Thread.sleep(20000);
+    Thread.sleep(5000);
   }
 
   @After

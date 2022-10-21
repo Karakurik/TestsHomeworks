@@ -1,6 +1,7 @@
 package ru.itis.karakurik.login.base;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import ru.itis.karakurik.base.TestBase;
 import ru.itis.karakurik.dto.LoginDto;
 
@@ -32,5 +33,14 @@ public class LoginBaseTest extends TestBase {
         driver.findElement(By.className("login__form"))
                 .findElement(By.className("m_type_filled"))
                 .click();
+    }
+
+    public static boolean isLoggedIn(WebDriver driver) {
+        try {
+            driver.findElement(By.linkText("Войти"));
+            return false;
+        } catch (Exception e) {
+            return true;
+        }
     }
 }
