@@ -1,26 +1,12 @@
 package ru.itis.karakurik.login;
 
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
-import ru.itis.karakurik.dto.LoginDto;
-import ru.itis.karakurik.login.base.LoginBaseTest;
+import ru.itis.karakurik.base.TestBase;
 
-public class LoginTest extends LoginBaseTest {
-
-  @Before
-  public void setUp() {
-    loginDto = new LoginDto("insafanas@mail.ru", "insaf_password");
-  }
-
-  @Test
-  public void login() throws Exception {
-    loginBase();
-    Thread.sleep(5000);
-  }
-
-  @After
-  public void tearDown() {
-    closeDriver();
-  }
+public class LoginTest extends TestBase {
+    @Test
+    public void login() throws Exception {
+        loginBase();
+        Thread.sleep(5000);
+    }
 }
