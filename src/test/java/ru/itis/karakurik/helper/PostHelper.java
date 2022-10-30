@@ -16,4 +16,12 @@ public class PostHelper extends TeletypeHelperBase {
         applicationManager.getHelperBase().sleep(3);
         driver.findElement(By.className("editorPublisher__submit")).click();
     }
+
+    public PostDto getLastPost() throws InterruptedException {
+        driver.findElement(By.className("blog__articles_list")).findElement(By.className("lnk")).click();
+        applicationManager.getHelperBase().sleep(3);
+        String title = driver.findElement(By.className("article__header_title")).getText();
+        String content = driver.findElement(By.className("article__content")).getText();
+        return new PostDto(title, content);
+    }
 }

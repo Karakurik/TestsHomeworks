@@ -26,4 +26,9 @@ public class NavigationHelper extends TeletypeHelperBase {
         driver.findElement(By.className("newArticleMenu")).click();
         sleep(3);
     }
+
+    public void openBlogPage() throws InterruptedException {
+        driver.findElement(By.className("menu__account")).click();
+        driver.findElement(By.className("accountPopup__blog")).click();
+    }
 }

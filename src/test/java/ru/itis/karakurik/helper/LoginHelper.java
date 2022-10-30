@@ -23,4 +23,29 @@ public class LoginHelper extends TeletypeHelperBase {
 
         sleep(3);
     }
+
+    public void logout() throws InterruptedException {
+        driver.findElement(By.className("menu__account")).click();
+        driver.findElement(By.xpath("/html/body/div[1]/div[2]/div/div/div[5]/div[2]")).click();
+        sleep(3);
+    }
+
+    public boolean isAuthorized() {
+        return isElementPresent(By.className("menu__account"));
+    }
+
+    public String getAuthorizedUserPath() {
+        if (!isAuthorized()) return null;
+
+        String path = driver.findElement(By.xpath("//li[@id='l_pr']/a")).getAttribute("href");
+        path = path.substring(path.lastIndexOf('/'));
+
+        return path;
+    }
+
+    public String getAuthorizedUserNickName() {
+        if (!isAuthorized()) return null;
+
+        return driver.findElement(By.className("menu__account_name")).getText();
+    }
 }
