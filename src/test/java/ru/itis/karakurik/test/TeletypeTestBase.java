@@ -14,6 +14,6 @@ public class TeletypeTestBase {
 
     @After
     public void tearDown() {
-        applicationManager.exit();
+        applicationManager.close();
     }
 }

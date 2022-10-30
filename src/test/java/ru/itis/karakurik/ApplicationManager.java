@@ -36,7 +36,7 @@ public class ApplicationManager {
         postHelper = new PostHelper(this);
     }
 
-    public void exit() {
+    public void close() {
         driver.quit();
         String verificationErrorString = verificationErrors.toString();
         if (!verificationErrorString.equals("")) {
