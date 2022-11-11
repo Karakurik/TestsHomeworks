@@ -32,4 +32,8 @@ public class TeletypeHelperBase {
     protected void sendEscapeKey() {
         new Actions(driver).sendKeys(Keys.ESCAPE).perform();
     }
+
+    protected void sendEnterKey() {
+        new Actions(driver).sendKeys(Keys.ENTER).perform();
+    }
 }

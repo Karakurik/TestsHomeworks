@@ -8,6 +8,7 @@ import ru.itis.karakurik.helper.TeletypeHelperBase;
 import ru.itis.karakurik.helper.LoginHelper;
 import ru.itis.karakurik.helper.NavigationHelper;
 import ru.itis.karakurik.helper.PostHelper;
+import ru.itis.karakurik.utils.DestructorUtil;
 
 import java.time.Duration;
 
@@ -37,6 +38,8 @@ public class ApplicationManager {
         navigationHelper = new NavigationHelper(this, BASE_URL);
         loginHelper = new LoginHelper(this);
         postHelper = new PostHelper(this);
+
+        DestructorUtil.addManagerDestructor(this);
     }
 
     public static ApplicationManager getInstance() {

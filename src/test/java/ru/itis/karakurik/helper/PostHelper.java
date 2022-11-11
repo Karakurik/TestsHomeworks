@@ -18,10 +18,21 @@ public class PostHelper extends TeletypeHelperBase {
     }
 
     public PostDto getLastPost() throws InterruptedException {
-        driver.findElement(By.className("blog__articles_list")).findElement(By.className("lnk")).click();
+        try {
+            driver.findElement(By.className("blog__articles_list")).findElement(By.className("lnk")).click();
+        } catch (Exception e) {
+            return null;
+        }
         applicationManager.getHelperBase().sleep(3);
         String title = driver.findElement(By.className("article__header_title")).getText();
         String content = driver.findElement(By.className("article__content")).getText();
         return new PostDto(title, content);
+    }
+
+    public void deleteLastPost() throws InterruptedException {
+        driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div[1]/div[2]/div[3]/div[1]/a")).click();
+        applicationManager.getHelperBase().sleep(3);
+        driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div[1]/div[2]/div[3]/div/button")).click();
+        sendEnterKey();
     }
 }

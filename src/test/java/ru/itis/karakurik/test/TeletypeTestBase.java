@@ -13,6 +13,6 @@ public class TeletypeTestBase {
 
     @Before
     public void setUp() {
-        applicationManager = new ApplicationManager();
+        applicationManager = ApplicationManager.getInstance();
     }
 }

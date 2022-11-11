@@ -2,6 +2,7 @@ package ru.itis.karakurik.test;
 
 import org.junit.Assert;
 import org.junit.Test;
+import org.junit.runner.OrderWith;
 
 public class LoginTest extends TeletypeTestBase {
 
