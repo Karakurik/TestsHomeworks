@@ -1,8 +1,10 @@
 package ru.itis.karakurik.generators;
 
 import ru.itis.karakurik.model.PostModel;
+import ru.itis.karakurik.model.UserModel;
 import ru.itis.karakurik.model.jaxb.Posts;
-import ru.itis.karakurik.test.TeletypeTestBase;
+import ru.itis.karakurik.model.jaxb.Users;
+import ru.itis.karakurik.utils.StringUtils;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -15,7 +17,7 @@ import java.util.List;
 public class PostsGenerator {
     public static final String DIRECTORY = "output/";
     private static final int COUNT = 2;
-    public static final String FILENAME = "generatedPosts";
+    public static final String POSTS_FILENAME = "generatedPosts";
     public static final String FORMAT = ".xml";
 
 
@@ -23,11 +25,11 @@ public class PostsGenerator {
         List<PostModel> posts = new LinkedList<>();
         for (int i = 0; i < COUNT; i++) {
             posts.add(new PostModel(
-                    TeletypeTestBase.generateRandomText(5, 20),
-                    TeletypeTestBase.generateRandomText(50, 100)
+                    StringUtils.generateRandomText(5, 20),
+                    StringUtils.generateRandomText(50, 100)
             ));
         }
-        try (FileWriter fileWriter = new FileWriter(DIRECTORY + FILENAME + FORMAT)) {
+        try (FileWriter fileWriter = new FileWriter(DIRECTORY + POSTS_FILENAME + FORMAT)) {
             writePostsToXmlFile(posts, fileWriter);
         } catch (IOException exception) {
             throw new RuntimeException(exception);

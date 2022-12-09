@@ -2,21 +2,21 @@ package ru.itis.karakurik.helper;
 
 import org.openqa.selenium.By;
 import ru.itis.karakurik.ApplicationManager;
-import ru.itis.karakurik.model.LoginModel;
+import ru.itis.karakurik.model.UserModel;
 
 public class LoginHelper extends TeletypeHelperBase {
     public LoginHelper(ApplicationManager applicationManager) {
         super(applicationManager);
     }
 
-    public void login(LoginModel loginModel) throws InterruptedException {
+    public void login(UserModel userModel) throws InterruptedException {
         driver.findElement(By.name("email")).clear();
         driver.findElement(By.name("password")).clear();
 
         sleep(3);
 
-        driver.findElement(By.name("email")).sendKeys(loginModel.getEmail());
-        driver.findElement(By.name("password")).sendKeys(loginModel.getPassword());
+        driver.findElement(By.name("email")).sendKeys(userModel.getEmail());
+        driver.findElement(By.name("password")).sendKeys(userModel.getPassword());
         driver.findElement(By.className("login__form"))
                 .findElement(By.className("m_type_filled"))
                 .click();

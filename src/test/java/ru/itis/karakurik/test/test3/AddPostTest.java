@@ -1,4 +1,4 @@
-package ru.itis.karakurik.test;
+package ru.itis.karakurik.test.test3;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -8,6 +8,7 @@ import org.junit.experimental.theories.Theory;
 import org.junit.runner.RunWith;
 import ru.itis.karakurik.model.PostModel;
 import ru.itis.karakurik.model.jaxb.Posts;
+import ru.itis.karakurik.test.TeletypeTestBase;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -25,7 +26,7 @@ public class AddPostTest extends TeletypeTestBase {
         try {
             JAXBContext context = JAXBContext.newInstance(Posts.class);
             Unmarshaller unmarshaller = context.createUnmarshaller();
-            Posts posts = (Posts) unmarshaller.unmarshal(new File(DIRECTORY + FILENAME + FORMAT));
+            Posts posts = (Posts) unmarshaller.unmarshal(new File(DIRECTORY + POSTS_FILENAME + FORMAT));
             return posts.getPosts();
         } catch (JAXBException exception) {
             throw new RuntimeException(exception);
@@ -36,9 +37,6 @@ public class AddPostTest extends TeletypeTestBase {
     @Test
     @Theory
     public void addPost(PostModel post) throws Exception {
-        applicationManager.getNavigationHelper().openLoginPage();
-        applicationManager.getLoginHelper().login(LOGIN_MODEL);
-        applicationManager.getHelperBase().sleep(3);
         applicationManager.getNavigationHelper().openNewPostPage();
         applicationManager.getPostHelper().createPost(post);
         applicationManager.getNavigationHelper().openBlogPage();
@@ -46,7 +44,5 @@ public class AddPostTest extends TeletypeTestBase {
         PostModel createdPost = applicationManager.getPostHelper().getLastPost();
         Assert.assertEquals(post.getTitle(), createdPost.getTitle());
         Assert.assertEquals(post.getContent(), createdPost.getContent());
-
-        applicationManager.getLoginHelper().logout();
     }
 }
