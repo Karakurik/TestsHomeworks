@@ -1,4 +1,4 @@
-package ru.itis.karakurik.dto;
+package ru.itis.karakurik.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +9,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class PostDto {
-    private String title;
-    private String content;
+public class LoginModel {
+    private String email;
+    private String password;
+    private String nickName;
 }
